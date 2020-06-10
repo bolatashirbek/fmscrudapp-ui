@@ -1,0 +1,33 @@
+<h3 class="text-center">
+    Список физических лиц
+</h3>
+<table class="table table-minimal-border table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th>#</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>ИИН</th>
+        <th>Регион</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody striped="true">
+    <tr *ngFor="let person of persons">
+        <td>{{person.id ? person.id : 'N/A' }}</td>
+        <td>{{person.lastName ? person.lastName : 'N/A'}}</td>
+        <td>{{person.firstName ? person.firstName : 'N/A'}}</td>
+        <td>{{person.patronymic ? person.patronymic : 'N/A'}}</td>
+        <td>{{person.iin ? person.iin : 'N/A'}}</td>
+        <td>{{person.region.name ? person.region.name : 'N/A'}}</td>
+        <td>
+            <button type="button" class="btn btn-warning" [routerLink]="['edit', person.id]">Изменить</button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger" (click)="delete(person.id)">Удалить</button>
+        </td>
+    </tr>
+    </tbody>
+</table>

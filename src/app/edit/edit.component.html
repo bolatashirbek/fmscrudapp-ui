@@ -1,0 +1,97 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title-wrapper">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="back-button-block">
+                            <button type="button" (click)="back()" class="btn btn-link">
+                                <span class="badge badge-primary">назад</span>
+                            </button>
+                        </div>
+                        <div class="page-title-block">
+                            <div class="page-title text-center">
+                                <span>Изменить физического лица</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form #editPerson="ngForm" class="form-horizontal" (submit)="edit(person.id, editPerson)"
+                          novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lastName">Фамилия</label>
+                                    <div class="input-group">
+                                        <input type="text" id="lastName" name="lastName" class="form-control"
+                                               [(ngModel)]="person.lastName">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="firstName">Имя</label>
+                                    <div class="input-group">
+                                        <input type="text" id="firstName" name="firstName" class="form-control"
+                                               [(ngModel)]="person.firstName">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="patronymic">Отчество</label>
+                                    <div class="input-group">
+                                        <input type="text" id="patronymic" name="patronymic" class="form-control"
+                                               [(ngModel)]="person.patronymic">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="iin">ИИН</label>
+                                    <div class="input-group">
+                                        <input type="text" id="iin" name="iin" class="form-control"
+                                               [(ngModel)]="person.iin">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="id">Регион</label>
+                                    <div class="input-group">
+                                        <input *ngIf="person.region" type="text" id="id" name="id" class="form-control"
+                                               value="{{person.region.name}}"
+                                               readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <span>Выбрать Регион</span>
+                                <div>
+                                    <select name="personRegion" class="form-control" [(ngModel)]="person.region">
+                                        <option *ngFor="let region of regions"
+                                                [ngValue]="region">{{region.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-card-footer">
+                            <button type="submit" class="btn btn-gap btn-primary">Изменить</button>
+                            <button type="button" class="btn btn-default" (click)="back()">
+                                Отмена
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
