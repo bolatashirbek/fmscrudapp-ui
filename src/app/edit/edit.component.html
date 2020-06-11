@@ -11,7 +11,7 @@
                         </div>
                         <div class="page-title-block">
                             <div class="page-title text-center">
-                                <span>Изменить физического лица</span>
+                                <h3>Изменить физического лица</h3>
                             </div>
                         </div>
                     </div>
@@ -28,37 +28,41 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="lastName">Фамилия</label>
+                                    <label for="lastName">Фамилия <span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input type="text" id="lastName" name="lastName" class="form-control"
-                                               [(ngModel)]="person.lastName">
+                                               [(ngModel)]="person.lastName" placeholder="Введите свою фамилию"
+                                               required #lastName="ngModel">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="firstName">Имя</label>
+                                    <label for="firstName">Имя <span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input type="text" id="firstName" name="firstName" class="form-control"
-                                               [(ngModel)]="person.firstName">
+                                               [(ngModel)]="person.firstName" placeholder="Введите свое имя"
+                                               required #firstName="ngModel">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="patronymic">Отчество</label>
+                                    <label for="patronymic">Отчество <span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input type="text" id="patronymic" name="patronymic" class="form-control"
-                                               [(ngModel)]="person.patronymic">
+                                               [(ngModel)]="person.patronymic" placeholder="Введите ваше отчество"
+                                               required #patronymic="ngModel">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="iin">ИИН</label>
+                                    <label for="iin">ИИН <span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input type="text" id="iin" name="iin" class="form-control"
-                                               [(ngModel)]="person.iin">
+                                               [(ngModel)]="person.iin" placeholder="Введите свой иин"
+                                               required #iin="ngModel">
                                     </div>
                                 </div>
                             </div>
@@ -74,17 +78,23 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <span>Выбрать Регион</span>
+                                <span>Выбрать Регион <span class="text-danger">*</span></span>
                                 <div>
-                                    <select name="personRegion" class="form-control" [(ngModel)]="person.region">
+                                    <select name="personRegion" class="form-control" [(ngModel)]="person.region"
+                                            required #personRegion="ngModel">
                                         <option *ngFor="let region of regions"
                                                 [ngValue]="region">{{region.name}}</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-2 mb-3 text-danger">
+                            * Обязательные поля
+                        </div>
                         <div class="admin-card-footer">
-                            <button type="submit" class="btn btn-gap btn-primary">Изменить</button>
+                            <button type="submit" class="btn btn-gap btn-primary" [disabled]="!editPerson.form.valid">
+                                Изменить
+                            </button>
                             <button type="button" class="btn btn-default" (click)="back()">
                                 Отмена
                             </button>
