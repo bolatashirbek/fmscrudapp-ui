@@ -11,7 +11,6 @@
         <th>ИИН</th>
         <th>Регион</th>
         <th></th>
-        <th></th>
     </tr>
     </thead>
     <tbody striped="true">
@@ -22,11 +21,13 @@
         <td>{{person.patronymic ? person.patronymic : 'N/A'}}</td>
         <td>{{person.iin ? person.iin : 'N/A'}}</td>
         <td>{{person.region.name ? person.region.name : 'N/A'}}</td>
-        <td>
-            <button type="button" class="btn btn-warning" [routerLink]="['edit', person.id]">Изменить</button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-danger" (click)="delete(person.id)">Удалить</button>
+        <td width="220" class="text-right">
+            <span class="px-2">
+                <button type="button" class="btn-sm btn-warning" [routerLink]="['edit', person.id]">Изменить</button>
+            </span>
+            <span class="px-2">
+                <button type="button" class="btn-sm btn-danger" (click)="delete(person.id)">Удалить</button>
+            </span>
         </td>
     </tr>
     </tbody>
